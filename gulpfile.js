@@ -29,7 +29,7 @@ function customMocha(opts) {
       _(errors).each(function(err) {
         console.error(err);
         console.error(err.stack);
-      }).value();
+      });
       stream.emit('error', "Some tests failed.");
     }
     stream.emit('end');
@@ -54,7 +54,7 @@ gulp.task('test-mocha', function() {
       base: "test/",
       path: "test/a-test-specs.js",
     }));
-  }).value();
+  });
   return from(srcFiles)
     .pipe(mocha)
     .on('error', console.error)
@@ -148,7 +148,7 @@ gulp.task('test-mocha-opts-override', function (cb) {
         _(errors).each(function (err) {
           console.error(err);
           console.error(err.stack);
-        }).value();
+        });
         return cb(new Error('some tests failed'));
       }
       cb(null);
